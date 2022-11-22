@@ -10,5 +10,8 @@ echo "running entrypoint command(s)"
 set +e
 
 response=$(sh -c " $*")
+res=$?
 
 echo "::set-output name=response::$response"
+
+exit $res
