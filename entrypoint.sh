@@ -7,6 +7,8 @@ export KUBECONFIG="${PWD}/kubeconfig"
 
 echo "running entrypoint command(s)"
 
+set +e
+
 response=$(sh -c " $*")
 
 echo "::set-output name=response::$response"
