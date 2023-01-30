@@ -13,5 +13,7 @@ outputs:
 runs:
   using: "docker"
   image: "Dockerfile"
+  env: 
+    GH_PAT: ${{ secrets.GHCR_PAT }}
   args:
     - ${{ inputs.command }}
