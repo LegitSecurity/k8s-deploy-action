@@ -37,7 +37,11 @@ RUN wget https://storage.googleapis.com/kubernetes-release/release/v1.27.3/bin/l
 
 # Copy to the final image the executables
 FROM alpine:${ALPINE_VERSION}
+RUN apk add bash git
 COPY --from=builder /usr/local/aws-cli/ /usr/local/aws-cli/
 COPY --from=builder /aws-cli-bin/ /usr/local/bin/
 COPY --from=builder /usr/bin/helm /usr/bin/helm
 COPY --from=builder /usr/bin/kubectl /usr/bin/kubectl
+
+# Set bash as entrypoint
+ENTRYPOINT ["/bin/bash"]
